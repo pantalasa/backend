@@ -23,4 +23,4 @@ jobs:
           go build -o go-server
           ls
       - name: Go Service Test
-        run: go test -v -vet=off
+        run: go test ./... -coverprofile /tmp/coverage.out
