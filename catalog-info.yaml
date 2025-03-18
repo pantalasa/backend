@@ -7,8 +7,6 @@ metadata:
     earthly.dev/demo: true
   annotations:
     earthly.dev/service-discovery: quotesgo
-#  tags:
-#    - golang
   links:
     - url: https://foo.bar
 spec:
