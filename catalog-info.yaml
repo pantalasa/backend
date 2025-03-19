@@ -9,8 +9,9 @@ metadata:
     earthly.dev/service-discovery: quotesgo
   links:
     - url: https://foo.bar
+
 spec:
-  type: website2
+  type: website3
   lifecycle: production
   owner: eng-team
   system: public-websites
