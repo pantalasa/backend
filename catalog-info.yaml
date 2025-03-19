@@ -10,7 +10,7 @@ metadata:
   links:
     - url: https://foo.bar
 spec:
-  type: website
+  type: website2
   lifecycle: production
   owner: eng-team
   system: public-websites
