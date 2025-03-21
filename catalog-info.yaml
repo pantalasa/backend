@@ -11,6 +11,7 @@ metadata:
     - url: https://foo.bar
 
 
+
 spec:
   type: website5
   lifecycle: production
