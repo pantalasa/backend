@@ -1,26 +1,26 @@
 name: GH-Actions-Only
 on:
-  push:
-    branches:
-      - "**"
-  pull_request:
-    branches:
-      - "**"
+    push:
+        branches:
+            - "**"
+    pull_request:
+        branches:
+            - "**"
 env:
-  CARGO_TERM_COLOR: always
+    CARGO_TERM_COLOR: always
 jobs:
-  go_service_build:
-    runs-on: localdev-nacho
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          clean: true
-      - name: Go Service Build
-        run: |
-          cat Dockerfile
-          go mod download
-          go build -o go-server
-          ls
-      - name: Go Service Test
-        run: go test ./... -coverprofile /tmp/coverage.out
+    go_service_build:
+        runs-on: localdev-nacho2
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+              with:
+                clean: true
+            - name: Go Service Build
+              run: |
+                cat Dockerfile
+                go mod download
+                go build -o go-server
+                ls
+            - name: Go Service Test
+              run: go test ./... -coverprofile /tmp/coverage.out
