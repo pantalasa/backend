@@ -3,12 +3,6 @@ on:
     push:
         branches:
             - "**"
-
-
-
-
-
-
 env:
     CARGO_TERM_COLOR: always
 jobs:
@@ -24,6 +18,6 @@ jobs:
                 cat Dockerfile
                 go mod download
                 go build -o go-server
-                ls
+                ls -hal
             - name: Go Service Test
               run: go test ./... -coverprofile /tmp/coverage.out
