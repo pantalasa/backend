@@ -18,6 +18,6 @@ jobs:
                 cat Dockerfile
                 go mod download
                 go build -o go-server
-                ls -hal
+                ls -ha
             - name: Go Service Test
               run: go test ./... -coverprofile /tmp/coverage.out
