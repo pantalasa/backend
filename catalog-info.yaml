@@ -9,6 +9,7 @@ metadata:
     earthly.dev/service-discovery: quotesgo
   links:
     - url: https://foo.bar
+      name: Grafana link
 
 
 spec:
