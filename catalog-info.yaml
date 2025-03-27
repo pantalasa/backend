@@ -7,13 +7,11 @@ metadata:
     earthly.dev/demo: true
   annotations:
     earthly.dev/service-discovery: quotesgo
-  tags:
-    - golang
   links:
     - url: https://foo.bar
-      title: Grafana link
+      title: Grafana Link
 spec:
-  type: website
+  type: website5
   lifecycle: production
   owner: eng-team
   system: public-websites
