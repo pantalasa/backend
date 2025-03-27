@@ -6,10 +6,9 @@ metadata:
   labels:
     earthly.dev/demo: true
   annotations:
-    earthly.dev/service-discovery: quotesgo
+    earthly.dev/service-discovery: quotessgo
   links:
     - url: https://foo.bar
-
 
 spec:
   type: website5
