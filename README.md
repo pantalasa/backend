@@ -4,4 +4,4 @@ Go demo project, monitored by Earthly Lunar ®.
 
 Central configuration at: https://github.com/pantalasa/lunar
 
-HELLO 7
+HELLO 8
