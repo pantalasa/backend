@@ -11,7 +11,7 @@ metadata:
     - url: https://foo.bar
 
 spec:
-  type: website5
+  type: website54
   lifecycle: production
   owner: eng-team
   system: public-websites
