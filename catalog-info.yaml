@@ -7,6 +7,8 @@ metadata:
     earthly.dev/demo: true
   annotations:
     earthly.dev/service-discovery: quotessgo
+  tags:
+    - golang
   links:
     - url: https://foo.bar
       title: Grafana Link
