@@ -9,7 +9,7 @@ metadata:
     earthly.dev/service-discovery: quotessgo
   links:
     - url: https://foo.bar
-
+      title: Grafana Link
 spec:
   type: website54
   lifecycle: production
