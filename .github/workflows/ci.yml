@@ -10,7 +10,7 @@ env:
   CARGO_TERM_COLOR: always
 jobs:
   go_service_build:
-    runs-on: localdev-demo
+    runs-on: lunar-demo
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
