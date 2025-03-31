@@ -1,18 +1,19 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: quotes-go
-  description: Quotes service written in Go
+  name: backend
+  description: Pantalasa backend service
   labels:
     earthly.dev/demo: true
   annotations:
-    earthly.dev/service-discovery: quotesgo
+    earthly.dev/service-discovery: backend
   tags:
     - golang
   links:
-    - url: https://foo.bar
+    - url: https://grafana.dev.pantalasa.org
+      title: Grafana central panel
 spec:
-  type: website
+  type: backend
   lifecycle: production
   owner: eng-team
   system: public-websites
