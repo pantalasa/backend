@@ -11,6 +11,7 @@ metadata:
     - golang
   links:
     - url: https://foo.bar
+      title: Grafana Dashboard
 spec:
   type: website
   lifecycle: production
