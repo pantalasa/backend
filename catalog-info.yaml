@@ -11,7 +11,6 @@ metadata:
     - golang
   links:
     - url: https://grafana.dev.pantalasa.org
-      title: Grafana central panel
 spec:
   type: backend
   lifecycle: production
