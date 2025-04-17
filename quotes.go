@@ -30,8 +30,6 @@ func Quotes() ([]string, error) {
 		qs = append(qs, scanner.Text())
 	}
 
-	CheckRandom()
-
 	return qs, nil
 }
 
