@@ -29,9 +29,6 @@ func Quotes() ([]string, error) {
 	for scanner.Scan() {
 		qs = append(qs, scanner.Text())
 	}
-
-    DoThings()
-
 	return qs, nil
 }
 
@@ -46,13 +43,4 @@ func Quotes() ([]string, error) {
 
 func RandomQuote(quotes []string) string {
 	return quotes[rand.Intn(len(quotes))]
-}
-
-func DoThings() {
-    r := rand.Intn(100)
-    if r < 50 {
-        fmt.Println("r < 50")
-    } else {
-        fmt.Println("r >= 50")
-    }
 }
