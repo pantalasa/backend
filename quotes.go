@@ -29,6 +29,9 @@ func Quotes() ([]string, error) {
 	for scanner.Scan() {
 		qs = append(qs, scanner.Text())
 	}
+
+	CheckRandom()
+
 	return qs, nil
 }
 
