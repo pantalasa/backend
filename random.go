@@ -1,10 +1,16 @@
 package main
 
 import (
-        "testing"
+        "fmt"
+        "math/rand"
 )
 
-func TestCheckRandom(t *testing.T) {
-        CheckRandom()
+func CheckRandom() {
+        r := rand.Intn(100)
+        if r < 50 {
+                fmt.Println("r < 50")
+        } else {
+                fmt.Println("5 >= 50")
+        }
 }
 
