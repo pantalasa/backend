@@ -4,3 +4,4 @@ This is go test quote 3
 asdasd
 asdasd
 asdasd
+asdasd
