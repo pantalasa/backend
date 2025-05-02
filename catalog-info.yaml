@@ -8,7 +8,7 @@ metadata:
   annotations:
     earthly.dev/service-discovery: backend
   tags:
-    - golang
+    - test
   links:
     - url: https://grafana.dev.pantalasa.org
 spec:
