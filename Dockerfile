@@ -1,4 +1,4 @@
-FROM node
+FROM node:latest
 
 WORKDIR /go-server
 COPY go.mod go.sum ./
