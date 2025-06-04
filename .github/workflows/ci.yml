@@ -11,7 +11,7 @@ env:
 
 jobs:
   go_service_build:
-    runs-on: lunar-demo
+    runs-on: lunar
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
