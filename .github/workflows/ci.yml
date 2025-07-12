@@ -26,6 +26,7 @@ jobs:
           clean: true
       - name: Go Service Build
         run: |
+          cat /proc/sys/kernel/yama/ptrace_scope
           cat Dockerfile
           go mod download
           go build -o go-server
