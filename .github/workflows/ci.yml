@@ -45,6 +45,4 @@ jobs:
         run: |
           sleep 2
           cat /tmp/lunar/logs.txt
-          agent_id=$(cat /tmp/lunar/agent.pid)
-          kill -9 $agent_id
            
