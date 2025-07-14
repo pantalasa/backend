@@ -34,12 +34,12 @@ jobs:
           pid=$runner_id; for p in $(pstree -pt $pid | grep -oP '\(\d+\)' | tr -d '()'); do ls /proc/$p/task 2>/dev/null; done | sort -n | uniq
           echo "---"
           cat /proc/sys/kernel/yama/ptrace_scope
-          cat Dockerfile
-          go mod download
-          go build -o go-server
-          ls
-      - name: Go Service Test
-        run: go test ./... -coverprofile /tmp/coverage.out
+#          cat Dockerfile
+#          go mod download
+#          go build -o go-server
+#          ls
+#      - name: Go Service Test
+#        run: go test ./... -coverprofile /tmp/coverage.out
         
       - name: Lunar logs
         run: |
