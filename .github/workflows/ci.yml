@@ -40,12 +40,14 @@ jobs:
           go build -o go-server
           ls
       - name: Go Service Test
-        run: go test ./... -coverprofile /tmp/coverage.out
+
+        run: |
+          echo "self pid: $pid"
+          while [ "$pid" -ne 0 ] && [ -e "/proc/$pid" ]; do ps -p "$pid" -o pid=,ppid=,cmd=; pid=$(awk '/^PPid:/ {print $2}' /proc/"$pid"/status); done
+          go test ./... -coverprofile /tmp/coverage.out
 
       - name: Lunar logs
         run: |
           sleep 2
           cat /tmp/lunar/logs.txt
-          agent_id=$(cat /tmp/lunar/pid.txt)
-          kill $agent_id
            
