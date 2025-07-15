@@ -13,17 +13,17 @@ jobs:
   test-local:
     runs-on: nacho-test-lICm3dQrMNc5tBVA
     steps:
-       - run: |
-            i=0
-            echo "PPID: $PPID"
-            echo "PID: $$"
-            echo $$>/tmp/pid
-            while [ $i -lt 100 ]; do
-           echo "Iteration: $i"
-            (echo "$i")
-            sleep 2
-            ((i++))
-            done
+      - run: |
+          i=0
+          echo "PPID: $PPID"
+          echo "PID: $$"
+          echo $$>/tmp/pid
+          while [ $i -lt 100 ]; do
+         echo "Iteration: $i"
+          (echo "$i")
+          sleep 2
+          ((i++))
+          done
 
 #  go_service_build:
 #    runs-on: ubuntu-latest
