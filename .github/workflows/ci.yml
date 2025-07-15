@@ -11,7 +11,7 @@ env:
 
 jobs:
   test-local:
-    runs-on: nacho-test-QXtDRmutiJ8gmU8L
+    runs-on: nacho-test-ArwI72GIIlD8QTHo
     steps:
       - name: Go Service Build
         run: |
