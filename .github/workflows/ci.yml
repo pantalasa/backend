@@ -21,7 +21,7 @@ jobs:
 #          done
 
   go_service_build:
-    runs-on: nacho-test-8JAw0A
+    runs-on: nacho-test-J6407y
     steps:
       - name: Lunar attach
         uses: earthly/lunar-agent/attach@main
