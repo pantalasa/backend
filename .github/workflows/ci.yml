@@ -11,40 +11,46 @@ env:
 
 jobs:
   go_service_build:
-    runs-on: ubuntu-latest
+    runs-on: nacho-test-RGQz8AczTSOZbfJZ
     steps:
-      - name: Lunar attach
-        uses: earthly/lunar-agent/attach@main
-        with:
-          manifest-url: "github://pantalasa-cronos/lunar@main"
-          hub-token: "${{ secrets.LUNAR_HUB_TOKEN }}"
-          github-token: "${{ secrets.LUNAR_GITHUB_TOKEN }}"
-          hub-host: cronos.demo.earthly.dev
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          clean: true
-      - name: Go Service Build
-        run: |
-          pid=$$
-          echo "self pid: $pid"
-          while [ "$pid" -ne 0 ] && [ -e "/proc/$pid" ]; do ps -p "$pid" -o pid=,ppid=,cmd=; pid=$(awk '/^PPid:/ {print $2}' /proc/"$pid"/status); done
-          runner_id=$(pid=$$; while [ "$pid" -ne 1 ] && [ -e "/proc/$pid" ]; do ppid=$(awk '/^PPid:/ {print $2}' /proc/$pid/status); [ "$ppid" -eq 1 ] && echo "$pid"; pid=$ppid; done)
-          echo "runner process tree under pid: $runner_id"
-          pid=$runner_id; for p in $(pstree -pt $pid | grep -oP '\(\d+\)' | tr -d '()'); do ls /proc/$p/task 2>/dev/null; done | sort -n | uniq
-          echo "---"
+       - run: |
           sleep 2
           ls
-      - name: Go Service Test
-
-        run: |
-          echo "self pid: $pid"
-          while [ "$pid" -ne 0 ] && [ -e "/proc/$pid" ]; do ps -p "$pid" -o pid=,ppid=,cmd=; pid=$(awk '/^PPid:/ {print $2}' /proc/"$pid"/status); done
-          sleep 2
-          ls /tmp
-
-      - name: Lunar logs
-        run: |
-          sleep 2
-          cat /tmp/lunar/logs.txt
-           
+#  go_service_build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Lunar attach
+#        uses: earthly/lunar-agent/attach@main
+#        with:
+#          manifest-url: "github://pantalasa-cronos/lunar@main"
+#          hub-token: "${{ secrets.LUNAR_HUB_TOKEN }}"
+#          github-token: "${{ secrets.LUNAR_GITHUB_TOKEN }}"
+#          hub-host: cronos.demo.earthly.dev
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#        with:
+#          clean: true
+#      - name: Go Service Build
+#        run: |
+#          pid=$$
+#          echo "self pid: $pid"
+#          while [ "$pid" -ne 0 ] && [ -e "/proc/$pid" ]; do ps -p "$pid" -o pid=,ppid=,cmd=; pid=$(awk '/^PPid:/ {print $2}' /proc/"$pid"/status); done
+#          runner_id=$(pid=$$; while [ "$pid" -ne 1 ] && [ -e "/proc/$pid" ]; do ppid=$(awk '/^PPid:/ {print $2}' /proc/$pid/status); [ "$ppid" -eq 1 ] && echo "$pid"; pid=$ppid; done)
+#          echo "runner process tree under pid: $runner_id"
+#          pid=$runner_id; for p in $(pstree -pt $pid | grep -oP '\(\d+\)' | tr -d '()'); do ls /proc/$p/task 2>/dev/null; done | sort -n | uniq
+#          echo "---"
+#          sleep 2
+#          ls
+#      - name: Go Service Test
+#
+#        run: |
+#          echo "self pid: $pid"
+#          while [ "$pid" -ne 0 ] && [ -e "/proc/$pid" ]; do ps -p "$pid" -o pid=,ppid=,cmd=; pid=$(awk '/^PPid:/ {print $2}' /proc/"$pid"/status); done
+#          sleep 2
+#          ls /tmp
+#
+#      - name: Lunar logs
+#        run: |
+#          sleep 2
+#          cat /tmp/lunar/logs.txt
+#
