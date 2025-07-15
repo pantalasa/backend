@@ -11,19 +11,19 @@ env:
 
 jobs:
   test-local:
-    runs-on: nacho-test-o6mzjMQHIPzVi9Wp
+    runs-on: nacho-test-7bEsRkHrOzdNN3by
     steps:
       - name: Go Service Build
         run: |
           i=0
           echo "PPID: $PPID"
           echo "PID: $$"
-          echo $$>/tmp/pid
           while [ $i -lt 100 ]; do
-          echo "Iteration: $i"
-          sleep 2
-          ((i++))
+            echo "Iteration: $i"
+            sleep 2
+            ((i++))
           done
+        shell: bash
 
 #  go_service_build:
 #    runs-on: ubuntu-latest
