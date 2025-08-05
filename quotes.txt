@@ -4,3 +4,4 @@ This is go test quote 3
 Apple
 1
 2
+3
