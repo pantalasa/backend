@@ -4,7 +4,7 @@ metadata:
   name: backend
   description: Pantalasa backend service
   labels:
-    earthly.dev/demo: true
+    earthly.dev/demo: "true"
   annotations:
     earthly.dev/service-discovery: backend
   tags:
@@ -15,5 +15,5 @@ metadata:
 spec:
   type: backend
   lifecycle: production
-  owner: eng-team
+#  owner: eng-team
   system: public-websites
