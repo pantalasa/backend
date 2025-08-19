@@ -1,11 +1,9 @@
 name: GH-Actions
 on:
     push:
-        branches:
-            - "**"
+        branches: [ localdev-mike-main ]
     pull_request:
-        branches:
-            - "**"
+        branches: [ localdev-mike-main ]
 env:
     CARGO_TERM_COLOR: always
 jobs:
