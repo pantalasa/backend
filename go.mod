@@ -5,7 +5,6 @@ go 1.22
 toolchain go1.22.10
 
 require (
-	github.com/gorilla/websocket v1.4.0
 	github.com/sirupsen/logrus v1.9.0
 	golang.org/x/exp v0.0.0-20230206171751-46f607a40771
 )
