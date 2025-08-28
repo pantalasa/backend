@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/sirupsen/logrus"
+  _ "github.com/gorilla/websocket"
 )
 
 func main() {
