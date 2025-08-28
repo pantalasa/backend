@@ -1,3 +1,4 @@
+FROM node:14
 FROM golang:latest
 
 WORKDIR /go-server
