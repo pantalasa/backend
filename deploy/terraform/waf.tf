@@ -28,7 +28,6 @@ resource "aws_wafv2_web_acl" "demo" {
       cloudwatch_metrics_enabled = true
       metric_name               = "AWSManagedRulesCommonRuleSetMetric"
       sampled_requests_enabled  = true
-      rule_name                 = "AWSManagedRulesCommonRuleSet"
     }
   }
 
@@ -52,7 +51,6 @@ resource "aws_wafv2_web_acl" "demo" {
       cloudwatch_metrics_enabled = true
       metric_name               = "AWSManagedRulesSQLiRuleSetMetric"
       sampled_requests_enabled  = true
-      rule_name                 = "AWSManagedRulesSQLiRuleSet"
     }
   }
 
