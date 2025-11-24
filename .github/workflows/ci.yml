@@ -30,7 +30,11 @@ jobs:
           --label repository=${{ github.repository }} \
           -t backend:${{ github.sha }} \
           .
-    
+
+    - name: Build inner supporting Docker image
+      run: |
+        docker build -f image/Dockerfile -t backend-inner:${{ github.sha }} backend-support-image
+
     - name: Test Docker image
       run: |
         docker run --rm backend:${{ github.sha }} && echo "Docker image works!"
