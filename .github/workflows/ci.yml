@@ -34,7 +34,7 @@ jobs:
     - name: Build Inner Docker image
       run: |
         docker build \
-          -f ./image/Dockerfile
+          -f ./image/Dockerfile \
           -t inner-image:${{ github.sha }} \
           image
     
