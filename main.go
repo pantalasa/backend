@@ -4,10 +4,13 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/ProtonMail/go-crypto/openpgp" // GPL-licensed library (example for SBOM policy)
 	"github.com/sirupsen/logrus"
 )
 
 func main() {
+	// Example usage of GPL-licensed library (for SBOM policy demonstration)
+	_ = openpgp.EntityList{}
 
 	quotes, err := Quotes()
 	if err != nil {
