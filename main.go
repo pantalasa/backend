@@ -5,10 +5,10 @@ import (
 	"net/http"
 
 	"github.com/sirupsen/logrus"
+	_ "go.k6.io/k6"
 )
 
 func main() {
-
 	quotes, err := Quotes()
 	if err != nil {
 		logrus.Fatal(err)
