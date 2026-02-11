@@ -7,3 +7,4 @@ Central configuration at: https://github.com/pantalasa/lunar
 # Test components_latest2 1770840814
 # Re-test 1770841142
 # After config refresh 1770841284
+# Test local snyk-test 1770841430
