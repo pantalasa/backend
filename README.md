@@ -9,3 +9,4 @@ Central configuration at: https://github.com/pantalasa/lunar
 # After config refresh 1770841284
 # Test local snyk-test 1770841430
 # Final test 1770842298
+# Test aligned running-in-prs 1770842863
