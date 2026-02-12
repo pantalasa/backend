@@ -17,3 +17,4 @@ Central configuration at: https://github.com/pantalasa/lunar
 # SQL permission retest
 # breadcrumb test
 # start breadcrumb
+# force refresh
