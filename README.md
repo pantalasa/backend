@@ -14,3 +14,4 @@ Central configuration at: https://github.com/pantalasa/lunar
 # Jira plugin test
 # Test 1770854501
 # Test round 2
+# FAIL test round
