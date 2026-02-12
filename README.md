@@ -20,3 +20,4 @@ Central configuration at: https://github.com/pantalasa/lunar
 # poll
 # trigger
 # final
+# trigger PR run after manifest refresh
