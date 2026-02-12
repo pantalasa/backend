@@ -24,3 +24,4 @@ Central configuration at: https://github.com/pantalasa/lunar
 # debug logs
 # trigger debug run
 # PG fallback test
+# retry after env fix
