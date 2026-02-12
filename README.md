@@ -15,3 +15,4 @@ Central configuration at: https://github.com/pantalasa/lunar
 # Test 1770854501
 # Test round 2
 # FAIL test round
+# FAIL test 2
