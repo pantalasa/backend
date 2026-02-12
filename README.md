@@ -18,3 +18,4 @@ Central configuration at: https://github.com/pantalasa/lunar
 # refresh 2
 # final test
 # poll
+# trigger
