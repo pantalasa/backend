@@ -1,9 +1,9 @@
 name: CI
 on:
     push:
-        branches: [main, master, localdev-nacho-main ]
+        branches: [localdev-nacho-main ]
     pull_request:
-        branches: [main, master, localdev-nacho-main ]
+        branches: [localdev-nacho-main ]
 jobs:
     build:
         runs-on: localdev-nacho-main
