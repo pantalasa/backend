@@ -17,3 +17,4 @@ Central configuration at: https://github.com/pantalasa/lunar
 # components_latest2 test
 # refresh 2
 # final test
+# poll
