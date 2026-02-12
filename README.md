@@ -15,3 +15,4 @@ Central configuration at: https://github.com/pantalasa/lunar
 # Test refresh 1770854674
 # SQL fix test
 # SQL fix test 2
+# SQL fix test 3
