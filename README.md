@@ -23,3 +23,4 @@ Central configuration at: https://github.com/pantalasa/lunar
 # trigger PR run after manifest refresh
 # debug logs
 # trigger debug run
+# PG fallback test
