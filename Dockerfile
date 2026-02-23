@@ -1,4 +1,4 @@
-FROM cgr.dev/chainguard/go:latest-dev
+FROM golang:1.22.0-alpine
 
 LABEL application_name="backend"
 LABEL description="Backend service for pantalasa quotes application"
