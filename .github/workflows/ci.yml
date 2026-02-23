@@ -1,45 +1,36 @@
 name: CI
-
 on:
-  push:
-    branches: [ main, master, localdev-dchw-main ]
-  pull_request:
-    branches: [ main, master ]
-
+    push:
+        branches: [main, master, localdev-dchw-main]
+    pull_request:
+        branches: [main, master]
 jobs:
-  build:
-    runs-on: lunar
-    
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Set up Go
-      uses: actions/setup-go@v4
-      with:
-        go-version: '1.21'
-    
-    - name: Run tests
-      run: go test -v ./...
-    
-    - name: Install Snyk CLI
-      run: npm install -g snyk
-    
-    - name: Snyk security scan
-      run: snyk test --all-projects
-      continue-on-error: true
-      env:
-        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-    
-    - name: Build Docker image
-      run: |
-        docker build \
-          --label git_sha=${{ github.sha }} \
-          --label build_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
-          --label version=${{ github.ref_name }} \
-          --label repository=${{ github.repository }} \
-          -t backend:${{ github.sha }} \
-          .
-    
-    - name: Test Docker image
-      run: |
-        docker run --rm backend:${{ github.sha }} && echo "Docker image works!"
+    build:
+        runs-on: localdev-dchw-main
+        steps:
+            - uses: actions/checkout@v4
+            - name: Set up Go
+              uses: actions/setup-go@v4
+              with:
+                go-version: '1.21'
+            - name: Run tests
+              run: go test -v ./...
+            - name: Install Snyk CLI
+              run: npm install -g snyk
+            - name: Snyk security scan
+              run: snyk test --all-projects
+              continue-on-error: true
+              env:
+                SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+            - name: Build Docker image
+              run: |
+                docker build \
+                  --label git_sha=${{ github.sha }} \
+                  --label build_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
+                  --label version=${{ github.ref_name }} \
+                  --label repository=${{ github.repository }} \
+                  -t backend:${{ github.sha }} \
+                  .
+            - name: Test Docker image
+              run: |
+                docker run --rm backend:${{ github.sha }} && echo "Docker image works!"
