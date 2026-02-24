@@ -5,6 +5,13 @@ on:
     pull_request:
         branches: [localdev-nacho-main ]
 jobs:
+    build:
+        runs-on: localdev-nacho-main
+        steps:
+            - name: LS
+              run: |
+                ls -la
+
     xxx:
         uses: ./ci2.yml
         
