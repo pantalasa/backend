@@ -13,5 +13,5 @@ jobs:
                 ls -la
 
     xxx:
-        uses: ./ci2.yml
+        uses: ./ci2.yml@localdev-nacho-main
         
