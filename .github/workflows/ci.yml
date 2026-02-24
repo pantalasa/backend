@@ -13,5 +13,5 @@ jobs:
                 ls -la
 
     xxx:
-        uses: ./.github/workflows/ci2.yml@localdev-nacho-main
+        uses: ./.github/workflows/ci2.yml
         
