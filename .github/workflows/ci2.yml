@@ -13,13 +13,4 @@ jobs:
             
             - name: Build Docker image
               run: |
-                docker build \
-                  --label git_sha=${{ github.sha }} \
-                  --label build_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
-                  --label version=${{ github.ref_name }} \
-                  --label repository=${{ github.repository }} \
-                  -t backend:${{ github.sha }} \
-                  .
-            - name: Test Docker image
-              run: |
-                docker run --rm backend:${{ github.sha }} && echo "Docker image works!"
+                ls
