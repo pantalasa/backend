@@ -1,9 +1,6 @@
 name: CI
 on:
-    push:
-        branches: [localdev-nacho-main ]
-    pull_request:
-        branches: [localdev-nacho-main ]
+  workflow_call:
 jobs:
     build:
         runs-on: localdev-nacho-main
