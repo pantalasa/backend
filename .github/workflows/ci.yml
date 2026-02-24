@@ -5,24 +5,6 @@ on:
     pull_request:
         branches: [localdev-nacho-main ]
 jobs:
-    build:
-        runs-on: localdev-nacho-main
-        steps:
-            - uses: actions/checkout@v4
-            - name: Set up Go
-              uses: actions/setup-go@v4
-              with:
-                go-version: '1.22'
-            
-            - name: Build Docker image
-              run: |
-                docker build \
-                  --label git_sha=${{ github.sha }} \
-                  --label build_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ") \
-                  --label version=${{ github.ref_name }} \
-                  --label repository=${{ github.repository }} \
-                  -t backend:${{ github.sha }} \
-                  .
-            - name: Test Docker image
-              run: |
-                docker run --rm backend:${{ github.sha }} && echo "Docker image works!"
+    xxx:
+        uses: ./ci2.yml
+        
