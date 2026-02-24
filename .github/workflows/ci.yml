@@ -5,7 +5,7 @@ on:
     pull_request:
         branches: [localdev-nacho-main ]
 jobs:
-    build:
+    ls:
         runs-on: localdev-nacho-main
         steps:
             - name: LS
