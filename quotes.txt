@@ -2,10 +2,3 @@ This is go test quote 1
 This is go test quote 2 
 This is go test quote 3 
 test
-test
-test
-test
-test
-test
-test
-test
