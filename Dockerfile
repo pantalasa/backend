@@ -1,4 +1,4 @@
-FROM golang:1.22.0-alpine
+FROM golang:latest
 
 ARG GIT_SHA=unknown
 LABEL application_name="backend"
