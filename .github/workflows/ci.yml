@@ -43,3 +43,17 @@ jobs:
     - name: Test Docker image
       run: |
         docker run --rm backend:${{ github.sha }} && echo "Docker image works!"
+
+  sbom:
+    runs-on: lunar
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install Syft
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+      - name: Generate SBOM
+        run: |
+          syft dir:. -o cyclonedx-json=sbom.cyclonedx.json
+          echo "SBOM generated:"
+          cat sbom.cyclonedx.json | head -50
