@@ -1,6 +1,7 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
 	"net/http"
 
@@ -23,8 +24,15 @@ func main() {
 		logrus.Info(quote)
 		fmt.Fprint(w, quote)
 
-		// fmt.Fprint(w, "Hello from Earthly - 12:28PM")
+	})
 
+	// Vulnerable endpoint for CodeQL testing — SQL injection from user input
+	http.HandleFunc("/search", func(w http.ResponseWriter, r *http.Request) {
+		query := r.URL.Query().Get("q")
+		db, _ := sql.Open("sqlite3", ":memory:")
+		rows, _ := db.Query("SELECT * FROM items WHERE name = '" + query + "'")
+		defer rows.Close()
+		fmt.Fprint(w, "searched")
 	})
 
 	http.ListenAndServe(":80", nil)
