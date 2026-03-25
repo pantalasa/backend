@@ -9,7 +9,7 @@ on:
 jobs:
   analyze:
     name: Analyze (go)
-    runs-on: ubuntu-latest
+    runs-on: lunar
     permissions:
       security-events: write
       contents: read
