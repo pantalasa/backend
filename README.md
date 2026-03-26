@@ -13,7 +13,7 @@ go build -o build/quotes .
 
 ```bash  
 ./build/quotes
-```
+``` 
 
 ## Contributing
 
