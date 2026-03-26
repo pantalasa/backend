@@ -11,7 +11,7 @@ go build -o build/quotes .
 
 ## Usage
   
-```bash
+```bash 
 ./build/quotes
 ```
 
