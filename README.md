@@ -3,14 +3,14 @@
 Backend demo project, monitored by Earthly Lunar.
 
 ## Installation
-
-```bash
-go mod download
-go build -o build/quotes .
-```
+ 
+```bash 
+go mod download   
+go build -o build/quotes . 
+``` 
 
 ## Usage
-
+  
 ```bash
 ./build/quotes
 ```
