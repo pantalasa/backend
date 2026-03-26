@@ -7,7 +7,7 @@ Backend demo project, monitored by Earthly Lunar.
 ```bash 
 go mod download   
 go build -o build/quotes . 
-```
+``` 
 
 ## Usage
   
