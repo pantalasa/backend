@@ -33,6 +33,10 @@ resource "aws_dynamodb_table" "api_rate_limits" {
 
   hash_key = "client_id"
 
+  lifecycle {
+    prevent_destroy = true
+  }
+
   tags = {
     Service     = "backend"
     Environment = "production"

@@ -56,10 +56,11 @@ Resources:
 
   AuditLogTable:
     Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
     Properties:
       TableName: !Sub "${AWS::StackName}-audit-logs"
       BillingMode: PAY_PER_REQUEST
-      DeletionProtectionEnabled: false
+      DeletionProtectionEnabled: true
       AttributeDefinitions:
         - AttributeName: log_id
           AttributeType: S
@@ -69,6 +70,7 @@ Resources:
 
   CacheCluster:
     Type: AWS::ElastiCache::CacheCluster
+    DeletionPolicy: Retain
     Properties:
       CacheNodeType: cache.t3.micro
       Engine: redis
