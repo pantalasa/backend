@@ -22,3 +22,5 @@ go build -o build/quotes .
 3. Submit a pull request
 
 <!-- Trigger compliance-bundle collector pull -->
+
+<!-- Rerun under fixed compliance-bundle collector -->
