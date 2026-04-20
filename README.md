@@ -24,3 +24,4 @@ go build -o build/quotes .
 <!-- Trigger compliance-bundle collector pull -->
 
 <!-- Rerun under fixed compliance-bundle collector -->
+<!-- Final: flat compliance bundle -->
