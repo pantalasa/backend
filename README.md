@@ -20,3 +20,5 @@ go build -o build/quotes .
 1. Fork the repo
 2. Create a feature branch
 3. Submit a pull request
+
+<!-- Trigger compliance-bundle collector pull -->
