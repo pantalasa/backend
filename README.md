@@ -26,3 +26,4 @@ go build -o build/quotes .
 <!-- Rerun under fixed compliance-bundle collector -->
 <!-- Final: flat compliance bundle -->
 <!-- Full compliance bundle test -->
+<!-- Refresh bundle -->
