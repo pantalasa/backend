@@ -1,0 +1,55 @@
+openapi: 3.0.3
+info:
+  title: Pantalasa Backend — Quotes API
+  version: 1.0.0
+  description: |
+    Simple HTTP service that returns randomly-selected quotes.
+
+    This API is part of the Pantalasa dashboard and is consumed by the
+    frontend web app and mobile clients. The response body is a plain-text
+    string; there is no authentication.
+  contact:
+    name: Backend team
+    email: shane@pantalasa.org
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: https://backend.pantalasa.org
+    description: Production
+  - url: http://localhost:80
+    description: Local development
+
+paths:
+  /:
+    get:
+      operationId: getRandomQuote
+      summary: Return a random quote
+      description: |
+        Returns one quote drawn uniformly at random from the bundled
+        `quotes.txt` file. The response is `text/plain; charset=utf-8`
+        and includes permissive CORS headers so that the frontend can
+        consume it directly from the browser.
+      tags: [quotes]
+      responses:
+        "200":
+          description: A randomly-selected quote.
+          headers:
+            Access-Control-Allow-Origin:
+              description: CORS wildcard, always `*`.
+              schema:
+                type: string
+            Access-Control-Max-Age:
+              description: CORS preflight cache duration in seconds.
+              schema:
+                type: integer
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "The only way to do great work is to love what you do."
+
+tags:
+  - name: quotes
+    description: Quote retrieval operations
