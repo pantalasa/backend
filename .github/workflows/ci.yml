@@ -33,12 +33,31 @@ jobs:
     
     - name: Install Snyk CLI
       run: npm install -g snyk
-    
-    - name: Snyk security scan
+
+    - name: Snyk SCA (Open Source)
       run: snyk test --all-projects
       continue-on-error: true
       env:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+    - name: Snyk SAST (Snyk Code)
+      run: snyk code test
+      continue-on-error: true
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+    - name: Install Semgrep
+      run: |
+        apt-get update -y
+        apt-get install -y python3-venv pipx
+        pipx install semgrep
+        echo "/root/.local/bin" >> "$GITHUB_PATH"
+
+    - name: Semgrep SAST
+      run: semgrep ci
+      continue-on-error: true
+      env:
+        SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
 
     - name: Log in to Docker Hub
       if: github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v')
