@@ -3,12 +3,12 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"time"
 
 	"github.com/sirupsen/logrus"
 )
 
 func main() {
-
 	quotes, err := Quotes()
 	if err != nil {
 		logrus.Fatal(err)
@@ -22,10 +22,18 @@ func main() {
 
 		logrus.Info(quote)
 		fmt.Fprint(w, quote)
-
-		// fmt.Fprint(w, "Hello from Earthly - 12:28PM")
-
 	})
 
-	http.ListenAndServe(":80", nil)
+	// Configure explicit timeouts so the server isn't vulnerable to slow-loris
+	// clients that can otherwise hold connections open indefinitely.
+	srv := &http.Server{
+		Addr:              ":80",
+		ReadHeaderTimeout: 5 * time.Second,
+		ReadTimeout:       15 * time.Second,
+		WriteTimeout:      15 * time.Second,
+		IdleTimeout:       60 * time.Second,
+	}
+	if err := srv.ListenAndServe(); err != nil {
+		logrus.Fatal(err)
+	}
 }
