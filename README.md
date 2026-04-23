@@ -27,3 +27,4 @@ go build -o build/quotes .
 <!-- Final: flat compliance bundle -->
 <!-- Full compliance bundle test -->
 <!-- Refresh bundle -->
+# Trigger 2026-04-23T15:39:34Z — verify sonarqube/code-quality wiring
