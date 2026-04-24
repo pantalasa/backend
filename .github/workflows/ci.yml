@@ -93,6 +93,14 @@ jobs:
           echo "Pushed ${IMAGE}:${VERSION_TAG}"
         fi
 
+    - name: Build notifier service image
+      run: |
+        docker build \
+          --build-arg GIT_SHA=${{ github.sha }} \
+          -f ./services/notifier/Dockerfile \
+          -t notifier:${{ github.sha }} \
+          services/notifier
+
   sbom:
     runs-on: lunar
     steps:
