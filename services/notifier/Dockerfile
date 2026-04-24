@@ -1,4 +1,4 @@
-FROM golang:1.22-alpine
+FROM golang:1.22.0-alpine
 
 ARG GIT_SHA=unknown
 LABEL application_name="notifier"
