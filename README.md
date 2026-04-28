@@ -30,3 +30,4 @@ go build -o build/quotes .
 # Trigger 2026-04-23T15:39:34Z — verify sonarqube/code-quality wiring
 # Trigger 2026-04-23 — verify SONARQUBE_TOKEN now set on lunar.demo
 <!-- Trigger collector run -->
+<!-- Trigger collector run -->
