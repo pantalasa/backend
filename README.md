@@ -31,3 +31,4 @@ go build -o build/quotes .
 # Trigger 2026-04-23 — verify SONARQUBE_TOKEN now set on lunar.demo
 <!-- Trigger collector run -->
 <!-- Trigger collector run -->
+<!-- Refresh bundle after compliance-docs push -->
