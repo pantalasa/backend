@@ -32,3 +32,4 @@ go build -o build/quotes .
 <!-- Trigger collector run -->
 <!-- Trigger collector run -->
 <!-- Refresh bundle after compliance-docs push -->
+<!-- Refresh bundle with new DR shape -->
