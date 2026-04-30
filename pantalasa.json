@@ -1,0 +1,19 @@
+{
+  "service": {
+    "name": "quotes-api",
+    "owner": "shane@pantalasa.org",
+    "domain": "engineering.dashboard",
+    "tier": "tier-2"
+  },
+  "deployment": {
+    "platform": "kubernetes",
+    "region": "us-east-1",
+    "replicas": 3,
+    "rollout_strategy": "rolling"
+  },
+  "business": {
+    "capability": "merchant-quotes",
+    "cost_center": "CC-1042",
+    "compliance": ["SOC2"]
+  }
+}
