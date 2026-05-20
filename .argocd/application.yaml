@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: backend
+  namespace: argocd
+  labels:
+    pantalasa.org/argocd-template: standard-v2
+  annotations:
+    pantalasa.org/template-version: "2.0.0"
+    pantalasa.org/owner: shane@pantalasa.org
+spec:
+  project: platform
+  source:
+    repoURL: https://github.com/pantalasa/backend
+    targetRevision: HEAD
+    path: deploy/k8s/overlays/production
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: backend-prod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
