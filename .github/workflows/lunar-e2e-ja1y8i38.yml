@@ -1,0 +1,24 @@
+name: lunar-e2e-ja1y8i38
+on: push
+jobs:
+  e2e:
+    runs-on: localdev-nacho-e2e
+    steps:
+      - name: Step number 1
+        run: |
+          /bin/echo 'step 1 start'
+          /bin/echo 'step 1 complete'
+      - name: Step number 2
+        run: |
+          /bin/echo 'step 2 start'
+          /bin/echo 'step 2 middle'
+          /bin/echo 'step 2 complete'
+      - name: Step number 3
+        run: |
+          /bin/echo 'step 3 start'
+          /bin/echo 'step 3 middle'
+          /bin/echo 'step 3 complete'
+      - name: Step number 4
+        run: |
+          /bin/echo 'step 4 start'
+          /bin/echo 'step 4 complete'
