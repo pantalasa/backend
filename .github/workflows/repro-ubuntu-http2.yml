@@ -18,7 +18,7 @@ jobs:
       - uses: earthly/lunar-ci-tracer@v2.4.0
       - name: Step 1
         run: |
-          /bin/echo 'ubuntu http2 step 1 start'
+          /bin/echo 'ubuntu http2 step 1 start (eof-chart 1782573346)'
           /bin/echo 'ubuntu http2 step 1 complete'
       - name: Step 2
         run: |
