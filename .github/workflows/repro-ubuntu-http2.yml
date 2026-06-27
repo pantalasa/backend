@@ -1,0 +1,26 @@
+name: repro-ubuntu-http2
+on:
+  push:
+    paths:
+      - .github/workflows/repro-ubuntu-http2.yml
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    env:
+      LUNAR_HUB_HOST: e920-85-152-125-62.ngrok-free.app
+      LUNAR_HUB_GRPC_PORT: "443"
+      LUNAR_HUB_HTTP_PORT: "443"
+      LUNAR_HUB_INSECURE: "false"
+      LUNAR_HUB_TOKEN: token
+      LUNAR_STRICT_MODE: "true"
+      GODEBUG: "http2debug=2"
+    steps:
+      - uses: earthly/lunar-ci-tracer@v2.4.0
+      - name: Step 1
+        run: |
+          /bin/echo 'ubuntu http2 step 1 start'
+          /bin/echo 'ubuntu http2 step 1 complete'
+      - name: Step 2
+        run: |
+          /bin/echo 'ubuntu http2 step 2 start'
+          /bin/echo 'ubuntu http2 step 2 complete'
