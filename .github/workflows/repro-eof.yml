@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Step 1
         run: |
-          /bin/echo 'repro step 1 start'
+          /bin/echo 'repro step 1 start (released agent run)'
           /bin/echo 'repro step 1 complete'
       - name: Step 2
         run: |
