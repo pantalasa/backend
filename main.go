@@ -24,6 +24,11 @@ func main() {
 		fmt.Fprint(w, quote)
 	})
 
+	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
+		fmt.Fprint(w, "ok")
+	})
+
 	// Configure explicit timeouts so the server isn't vulnerable to slow-loris
 	// clients that can otherwise hold connections open indefinitely.
 	srv := &http.Server{
