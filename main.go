@@ -43,3 +43,5 @@ func main() {
 		logrus.Fatal(err)
 	}
 }
+
+// healthz endpoint for k8s probes
