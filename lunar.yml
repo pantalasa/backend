@@ -1,0 +1,6 @@
+# Lunar component self-declaration: criticality tier + where monitoring lives.
+# criticality drives ticket enforcement (production = required/blocks merge).
+criticality: production
+datadog:
+  service: backend
+  dashboard: https://us5.datadoghq.com/dashboard/backend-service-overview
