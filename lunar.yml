@@ -3,4 +3,4 @@
 criticality: production
 datadog:
   service: backend
-  dashboard: https://us5.datadoghq.com/dashboard/backend-service-overview
+  dashboard_id: s3e-ybw-jii
