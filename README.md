@@ -12,7 +12,7 @@ go build -o build/quotes .
 ## Usage 
 
 ```bash  
-./build/quotes
+./build/quotes 
 ```  
 
 ## Contributing
