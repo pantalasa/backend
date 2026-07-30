@@ -9,7 +9,7 @@ go mod download
 go build -o build/quotes .
 ```
  
-## Usage 
+## Usage   
  
 ```bash  
 ./build/quotes 
