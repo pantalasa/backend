@@ -8,9 +8,7 @@ Backend demo project, monitored by Earthly Lunar.
 go mod download
 go build -o build/quotes .
 ```
- 
-## Usage   
-   
+
 ## Usage 
  
 ```bash  
@@ -29,8 +27,10 @@ go build -o build/quotes .
 <!-- Final: flat compliance bundle -->
 <!-- Full compliance bundle test -->
 <!-- Refresh bundle -->
+
 # Trigger 2026-04-23T15:39:34Z — verify sonarqube/code-quality wiring
 # Trigger 2026-04-23 — verify SONARQUBE_TOKEN now set on lunar.demo
+
 <!-- Trigger collector run -->
 <!-- Trigger collector run -->
 <!-- Refresh bundle after compliance-docs push -->
