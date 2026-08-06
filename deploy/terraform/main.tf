@@ -9,6 +9,17 @@ terraform {
   }
 }
 
+module "transactions" {
+  source = "git::ssh://git@github.com/pantalasa/transactions-s3.git//terraform?ref=v1.0.0"
+
+  name_prefix = "pantalasa-backend"
+  tags = {
+    Service     = "backend"
+    Environment = "production"
+    Compliance  = "SOC2"
+  }
+}
+
 resource "aws_dynamodb_table" "api_rate_limits" {
   name         = "pantalasa-backend-rate-limits"
   billing_mode = "PAY_PER_REQUEST"
