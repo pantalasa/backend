@@ -9,6 +9,10 @@ import (
 )
 
 func main() {
+	logrus.SetFormatter(&logrus.JSONFormatter{
+		TimestampFormat: time.RFC3339,
+	})
+
 	quotes, err := Quotes()
 	if err != nil {
 		logrus.Fatal(err)
