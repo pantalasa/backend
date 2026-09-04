@@ -1,0 +1,46 @@
+name: lunar-e2e-sudo-6c2ff547gh
+on:
+  push:
+    paths:
+      - .github/workflows/lunar-e2e-sudo-6c2ff547gh.yml
+jobs:
+  sudo-test:
+    name: sudo-test-6c2ff547gh
+    runs-on: localdev-e2e-test-33863540870-e2e
+    steps:
+      - name: non-root sudo under tracing
+        run: |
+          set -euo pipefail
+          echo "runner identity: $(id)"
+          grep -E 'TracerPid|NoNewPrivs' /proc/self/status || true
+
+          # Guard against a false pass: the whole point is that the CI agent is
+          # tracing this step. If it isn't, no_new_privs would never be set and
+          # sudo would trivially work, telling us nothing.
+          tracer_pid=$(awk '/^TracerPid:/{print $2}' /proc/self/status)
+          if [ "${tracer_pid:-0}" = "0" ]; then
+            echo "ERROR: step is not traced (TracerPid=0); CI agent did not instrument it" >&2
+            exit 1
+          fi
+          echo "confirmed traced by CI agent (TracerPid=$tracer_pid)"
+
+          # An unprivileged user with passwordless sudo.
+          u="lunar-sudo-6c2ff547gh"
+          useradd -M "$u" 2>/dev/null || true
+          printf '%s ALL=(ALL:ALL) NOPASSWD: ALL\n' "$u" > "/etc/sudoers.d/lunar-e2e-6c2ff547gh"
+          chmod 440 "/etc/sudoers.d/lunar-e2e-6c2ff547gh"
+
+          # Drop to the unprivileged user, then escalate with sudo. If the tracer
+          # left no_new_privs set on the (root) tree, this child inherits it and
+          # sudo refuses with "no new privileges".
+          uid=$(id -u "$u"); gid=$(id -g "$u")
+          if ! out=$(setpriv --reuid "$uid" --regid "$gid" --clear-groups sudo -n whoami 2>&1); then
+            echo "sudo failed under tracing: $out" >&2
+            exit 1
+          fi
+          echo "sudo -n whoami resolved to: $out"
+          if [ "$out" != root ]; then
+            echo "unexpected sudo output: $out" >&2
+            exit 1
+          fi
+          echo "OK: non-root sudo works while traced by the CI agent"
