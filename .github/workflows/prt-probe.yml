@@ -1,0 +1,9 @@
+name: prt-probe
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "ref=$GITHUB_REF sha=$GITHUB_SHA base_ref=$GITHUB_BASE_REF head_ref=$GITHUB_HEAD_REF"
