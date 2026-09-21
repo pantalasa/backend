@@ -1,0 +1,32 @@
+name: lunar-e2e-prt-08e3a184gh
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  collect:
+    if: github.head_ref == 'e2e-prt-08e3a184gh'
+    runs-on: localdev-e2e-test-35594981172-e2e
+    steps:
+      - name: collect as this job
+        env:
+          COMPONENT: github.com/pantalasa/backend
+          HUB_AUDIENCE: lunar-hub.localdev
+          PROBE_KEY: e2e.prt_08e3a184gh
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BASE_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          OIDC=$(curl -sf -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+              "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=${HUB_AUDIENCE}" | jq -r '.value')
+          export LUNAR_HUB_TOKEN="$OIDC"
+          lunar whoami | tee /dev/stderr | grep 'ci-workload'
+          if OUT=$(lunar collect --component "$COMPONENT" --sha "$BASE_SHA" --pr "$PR_NUMBER" ".$PROBE_KEY" yes 2>&1); then
+            echo "lunar collect succeeded; the Hub must refuse writes from pull_request_target" >&2
+            exit 1
+          fi
+          echo "$OUT" >&2
+          grep -q 'not available to pull_request_target jobs; use the pull_request event' <<<"$OUT"
+          lunar component get-json --git-sha "$BASE_SHA" "$COMPONENT" >/dev/null
