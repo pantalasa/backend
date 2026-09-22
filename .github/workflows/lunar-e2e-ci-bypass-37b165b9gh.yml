@@ -1,0 +1,48 @@
+name: lunar-e2e-ci-bypass-37b165b9gh
+on:
+  push:
+    branches:
+      - localdev-e2e-test-35722146269-e2e
+    paths:
+      - .github/workflows/lunar-e2e-ci-bypass-37b165b9gh.yml
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  bypass:
+    runs-on: localdev-e2e-test-35722146269-e2e
+    steps:
+      - name: create and revoke a commit-bound bypass as this job
+        env:
+          COMPONENT: github.com/pantalasa/backend
+          REASON: CI OIDC bypass 37b165b9gh
+          HUB_AUDIENCE: lunar-hub.localdev
+        run: |
+          set -euo pipefail
+          OIDC=$(curl -sf -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN"               "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=${HUB_AUDIENCE}" | jq -r '.value')
+          export LUNAR_HUB_TOKEN="$OIDC"
+          fail() { echo "::error::$1"; exit 1; }
+
+          lunar whoami | tee /dev/stderr | grep -q 'ci-workload' || fail "not a ci-workload principal"
+
+          WRONG_SHA=0000000000000000000000000000000000000000
+          if ERR=$(lunar policy bypass-release "$COMPONENT" --sha "$WRONG_SHA" --for 1h --reason "$REASON wrong sha" 2>&1); then
+              fail "bypass on another SHA succeeded: $ERR"
+          fi
+          echo "$ERR" | grep -q 'bypasses.manage: sha .* is not the job.s commit'               || fail "unexpected wrong-SHA error: $ERR"
+
+          if ERR=$(lunar policy bypass-release "$COMPONENT" --sha "$GITHUB_SHA" --actor mallory --for 1h --reason "$REASON spoof" 2>&1); then
+              fail "caller-supplied actor succeeded: $ERR"
+          fi
+          echo "$ERR" | grep -q 'does not match the CI job actor'               || fail "unexpected spoofed-actor error: $ERR"
+
+          OUT=$(lunar policy bypass-release "$COMPONENT" --for 1h --reason "$REASON")
+          echo "$OUT"
+          echo "$OUT" | grep -q 'source:    ci' || fail "created bypass is not source=ci"
+          echo "$OUT" | grep -q 'CI identity; role not verified' || fail "CI provenance label missing"
+          BYPASS_ID=$(echo "$OUT" | awk '$1 == "id:" { print $2; exit }')
+          [ -n "$BYPASS_ID" ] || fail "created bypass printed no id"
+
+          REVOKED=$(lunar policy bypass-rm "$BYPASS_ID")
+          echo "$REVOKED"
+          echo "$REVOKED" | grep -q "Bypass $BYPASS_ID revoked" || fail "bypass was not revoked"
