@@ -1,0 +1,21 @@
+name: lunar-e2e-readiness-f64f88081
+on:
+  pull_request:
+    branches: ["localdev-e2e-test-36181312458-1-github-1-e2e"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ci:
+    if: github.event_name == 'pull_request'
+    runs-on: localdev-e2e-test-36181312458-1-github-1-e2e
+    steps:
+      - run: /bin/echo 'readiness CI f64f88081'
+  unrelated:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      # No Lunar agent: this run supplies no CI data to the component.
+      # Cleanup cancels it; the timeout bounds abandoned test runs.
+      - run: sleep 1800
