@@ -7,7 +7,8 @@ jobs:
     runs-on: localdev-bender-e2e
     steps:
       - name: Prep
-        run: echo "ci-archive localdev test: slow workflow, prep job"
+        run: |
+          echo "ci-archive localdev test, slow workflow, prep job"
   wait:
     needs: prep
     runs-on: localdev-bender-e2e
