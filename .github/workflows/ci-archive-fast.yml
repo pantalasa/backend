@@ -1,0 +1,13 @@
+name: ci-archive-fast
+on:
+  push:
+    branches: [localdev-bender-e2e]
+jobs:
+  build:
+    runs-on: localdev-bender-e2e
+    steps:
+      - name: Build
+        run: |
+          echo "ci-archive localdev test: fast workflow for ${GITHUB_SHA}"
+          uname -a
+          date -u
