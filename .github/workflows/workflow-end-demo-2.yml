@@ -7,4 +7,4 @@ jobs:
   build:
     runs-on: localdev-bender-e2e
     steps:
-      - run: echo "a second workflow on the same commit (round D)"
+      - run: echo "a second workflow on the same commit (round E)"
