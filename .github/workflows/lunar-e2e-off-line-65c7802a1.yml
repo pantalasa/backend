@@ -1,0 +1,23 @@
+name: lunar-e2e-off-line-65c7802a1
+on:
+  push:
+    branches:
+      - e2e-off-line-65c7802a1
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  collect:
+    runs-on: localdev-e2e-test-36253540314-1-github-1-e2e
+    steps:
+      - name: out-of-band collect as this job
+        env:
+          COMPONENT: github.com/pantalasa/backend
+          KEY: .e2e_off_line_65c7802a1.marker
+          HUB_AUDIENCE: lunar-hub.localdev
+        run: |
+          set -euo pipefail
+          OIDC=$(curl -sf -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+              "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=${HUB_AUDIENCE}" | jq -r '.value')
+          LUNAR_HUB_TOKEN="$OIDC" env -u LUNAR_COLLECT_STDOUT lunar collect \
+              --component "$COMPONENT" --sha "$GITHUB_SHA" "$KEY" "from-$GITHUB_REF_NAME"
