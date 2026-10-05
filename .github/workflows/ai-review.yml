@@ -1,0 +1,29 @@
+name: AI PR Review
+
+on:
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    runs-on: lunar
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Claude Code
+        run: npm install -g @anthropic-ai/claude-code
+
+      # Non-blocking while we tune the prompt.
+      - name: Claude review
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          git diff "origin/${GITHUB_BASE_REF}...HEAD" > pr.diff
+          claude -p "Review pr.diff for bugs and security issues. Reply with a short bullet list." \
+            --dangerously-skip-permissions
