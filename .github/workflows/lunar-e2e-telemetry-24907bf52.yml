@@ -1,0 +1,12 @@
+name: lunar-e2e-telemetry-24907bf52
+on:
+  push:
+    paths:
+      - .github/workflows/lunar-e2e-telemetry-24907bf52.yml
+jobs:
+  telemetry-probe:
+    name: telemetry-probe-24907bf52
+    runs-on: localdev-e2e-test-37386621286-1-github-2-e2e
+    steps:
+      - name: traced step
+        run: /bin/echo "telemetry probe (TEST_ID=24907bf52)"
