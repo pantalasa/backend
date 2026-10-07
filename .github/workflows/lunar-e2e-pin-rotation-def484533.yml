@@ -1,0 +1,17 @@
+name: lunar-e2e-pin-rotation-def484533
+on:
+  pull_request:
+    types: [opened, labeled]
+permissions:
+  contents: read
+jobs:
+  ready:
+    if: github.event.action == 'opened'
+    runs-on: ubuntu-24.04
+    steps:
+      - run: /bin/echo 'pin rotation PR opened def484533'
+  ci:
+    if: github.event.action == 'labeled' && github.event.label.name == 'e2e-pin-rotation-def484533'
+    runs-on: localdev-e2e-test-37671162580-1-github-3-e2e
+    steps:
+      - run: /bin/echo 'pin rotation CI def484533'
