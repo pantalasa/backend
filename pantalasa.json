@@ -3,7 +3,7 @@
     "name": "quotes-api",
     "owner": "shane@pantalasa.org",
     "domain": "engineering.dashboard",
-    "tier": "tier-2"
+    "tier": "tier-1"
   },
   "deployment": {
     "platform": "kubernetes",
