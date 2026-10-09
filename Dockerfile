@@ -1,4 +1,5 @@
-FROM golang:1.22.0-alpine
+FROM alpine:3.20.3
+RUN apk add --no-cache go
 
 ARG GIT_SHA=unknown
 LABEL application_name="backend"
