@@ -22,6 +22,11 @@ resource "aws_dynamodb_table" "api_rate_limits" {
 
   hash_key = "client_id"
 
+  ttl {
+    attribute_name = "expires_at"
+    enabled        = true
+  }
+
   lifecycle {
     prevent_destroy = true
   }
